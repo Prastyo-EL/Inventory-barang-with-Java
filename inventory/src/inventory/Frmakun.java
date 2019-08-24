@@ -295,15 +295,16 @@ public class Frmakun extends javax.swing.JDialog {
                     try {
                         Connection conn = konek.openkoneksi();
                         java.sql.Statement stm = conn.createStatement();
-                        stm.executeUpdate("UPDATE tmpetugas SET password='" + row_txtpassword + "' WHERE id = '" + lblid.getText() + "'");
+                        stm.executeUpdate("UPDATE tmsuperadmin SET password='" + row_txtpassword + "' WHERE id = '" + lblid.getText() + "'");
                         JOptionPane.showMessageDialog(null, "Berhasil mengubah password.");
                         PetugasSession.setU_password(row_txtpassword);
                         konek.closekoneksi();
+                        PetugasSession.setU_password(row_txtpassword);
                         this.hide();
                     } catch (SQLException e) {
                         JOptionPane.showMessageDialog(null, "Error " + e);
                     } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(superadmin.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(admin.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "Ulangi password lama salah.");

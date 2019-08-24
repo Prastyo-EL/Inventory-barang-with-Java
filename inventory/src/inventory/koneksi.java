@@ -23,7 +23,7 @@ public class koneksi {
     public Connection openkoneksi() throws ClassNotFoundException{
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory?user=root&pass=");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tori?user=root&pass=");
             return conn;
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Tidak ada koneksi yang terbuka.");

@@ -29,12 +29,14 @@ public class Frmbarang extends javax.swing.JDialog {
      * @param modal
      */
     inventory.koneksi konek = new inventory.koneksi();
+    inventory.PetugasSession petugasSession = new PetugasSession();
     
     public Frmbarang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         initUI();
-        
+        jTextField1.hide();
+        jTextField1.setText( PetugasSession.getU_username());
         SelectKategori();
         txttemp_kode.hide();
         txtid_kategori.hide();
@@ -92,14 +94,15 @@ public class Frmbarang extends javax.swing.JDialog {
         try {
             Connection conn = konek.openkoneksi();
             java.sql.Statement stm = conn.createStatement();
-            java.sql.ResultSet sql = stm.executeQuery("SELECT tmbarang.id, tmbarang.kode, tmbarang.nama, tmkategori.nama as kategori, tmbarang.stok, tmbarang.satuan FROM tmbarang JOIN tmkategori ON tmkategori.id = tmbarang.id_kategori");
+            java.sql.ResultSet sql = stm.executeQuery("SELECT tmbarang.id,tmbarang.nama_petugas, tmbarang.kode, tmbarang.nama, tmkategori.nama as kategori, tmbarang.stok, tmbarang.satuan FROM tmbarang JOIN tmkategori ON tmkategori.id = tmbarang.id_kategori");
             datatable.setModel(DbUtils.resultSetToTableModel(sql));
             datatable.getColumnModel().getColumn(0).setPreferredWidth(7);
             datatable.getColumnModel().getColumn(1).setPreferredWidth(20);
-            datatable.getColumnModel().getColumn(2).setPreferredWidth(90);
-            datatable.getColumnModel().getColumn(3).setPreferredWidth(60);
-            datatable.getColumnModel().getColumn(4).setPreferredWidth(40);
-            datatable.getColumnModel().getColumn(5).setPreferredWidth(25);
+            datatable.getColumnModel().getColumn(2).setPreferredWidth(20);
+            datatable.getColumnModel().getColumn(3).setPreferredWidth(90);
+            datatable.getColumnModel().getColumn(4).setPreferredWidth(60);
+            datatable.getColumnModel().getColumn(5).setPreferredWidth(40);
+            datatable.getColumnModel().getColumn(6).setPreferredWidth(25);
 
             sql.last();
             String count_rows = String.valueOf(sql.getRow());
@@ -162,6 +165,7 @@ public class Frmbarang extends javax.swing.JDialog {
         lblcount_rows = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         txtid_kategori = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Inventori Barang :: Data Barang");
@@ -267,7 +271,7 @@ public class Frmbarang extends javax.swing.JDialog {
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(14, 14, 14))
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(0, 83, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btncancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnsave, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -401,6 +405,8 @@ public class Frmbarang extends javax.swing.JDialog {
             }
         });
 
+        jTextField1.setText("jTextField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -430,13 +436,19 @@ public class Frmbarang extends javax.swing.JDialog {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_action)
-                    .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txttemp_kode, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtid_kategori, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txttemp_kode, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtid_kategori, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_action)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(134, 134, 134))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -452,7 +464,9 @@ public class Frmbarang extends javax.swing.JDialog {
                 .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_action)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_action)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(245, 245, 245)
@@ -470,7 +484,7 @@ public class Frmbarang extends javax.swing.JDialog {
                     .addComponent(lblcount_rows)
                     .addComponent(jLabel7)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -479,12 +493,13 @@ public class Frmbarang extends javax.swing.JDialog {
     private void btneditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditActionPerformed
         // TODO add your handling code here:
         String row_id = txtid.getText();
+        
         if(!"0".equals(row_id)){
             try {
                 btnsave.setText("Simpan Perubahan");
                 Connection conn = konek.openkoneksi();
                 java.sql.Statement stm = conn.createStatement();
-                java.sql.ResultSet sql = stm.executeQuery("SELECT tmbarang.id, tmbarang.kode, tmbarang.nama, tmbarang.id_kategori, tmkategori.nama as kategori, tmbarang.satuan, tmbarang.stok FROM tmbarang JOIN tmkategori ON tmkategori.id = tmbarang.id_kategori WHERE tmbarang.id='"+row_id+"'");
+                java.sql.ResultSet sql = stm.executeQuery("SELECT tmbarang.nama_petugas ,tmbarang.id, tmbarang.kode, tmbarang.nama, tmbarang.id_kategori, tmkategori.nama as kategori, tmbarang.satuan, tmbarang.stok FROM tmbarang JOIN tmkategori ON tmkategori.id = tmbarang.id_kategori WHERE tmbarang.id='"+row_id+"'");
                 if(sql.next()){
                     lbl_action.setForeground(new Color(43, 152, 240));
                     String kode = sql.getString("kode");
@@ -542,7 +557,7 @@ public class Frmbarang extends javax.swing.JDialog {
                     try {
                         Connection conn = konek.openkoneksi();
                         java.sql.Statement stm = conn.createStatement();
-                        stm.executeUpdate("INSERT INTO tmbarang(kode, nama, id_kategori, satuan, stok) VALUES ('" + row_txtkode + "', '" + row_txtnama + "', '" + row_txtkategori + "', '" + row_txtsatuan + "', '" + row_txtstok + "')");
+                        stm.executeUpdate("INSERT INTO tmbarang(nama_petugas,kode, nama, id_kategori, satuan, stok) VALUES ('"+petugasSession.getU_username()+"','" + row_txtkode + "', '" + row_txtnama + "', '" + row_txtkategori + "', '" + row_txtsatuan + "', '" + row_txtstok + "')");
                         JOptionPane.showMessageDialog(null, "Berhasil menyimpan data.");
                         btnadd.doClick();
                         konek.closekoneksi();
@@ -562,7 +577,7 @@ public class Frmbarang extends javax.swing.JDialog {
                     try {
                         Connection conn = konek.openkoneksi();
                         java.sql.Statement stm = conn.createStatement();
-                        stm.executeUpdate("UPDATE tmbarang SET kode='" + row_txtkode + "',nama='" + row_txtnama + "',id_kategori='" + row_txtkategori + "',satuan='" + row_txtsatuan + "',stok='" + row_txtstok + "' WHERE id = '" + row_id + "'");
+                        stm.executeUpdate("UPDATE tmbarang SET nama_petugas='"+petugasSession.getU_username()+"' ,kode='" + row_txtkode + "',nama='" + row_txtnama + "',id_kategori='" + row_txtkategori + "',satuan='" + row_txtsatuan + "',stok='" + row_txtstok + "' WHERE id = '" + row_id + "'");
                         JOptionPane.showMessageDialog(null, "Berhasil mengubah data.");
                         btnadd.doClick();
                         konek.closekoneksi();
@@ -765,6 +780,7 @@ public class Frmbarang extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbl_action;
     private javax.swing.JLabel lblcount_rows;
     private javax.swing.JPanel panel;

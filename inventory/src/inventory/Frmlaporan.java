@@ -33,6 +33,7 @@ public class Frmlaporan extends javax.swing.JDialog {
      */
     inventory.koneksi konek = new inventory.koneksi();
     inventory.report report = new inventory.report();
+    inventory.PetugasSession petugassession = new inventory.PetugasSession();
     
     public Frmlaporan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
