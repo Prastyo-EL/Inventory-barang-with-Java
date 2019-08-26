@@ -29,12 +29,13 @@ public class Frmsupplier extends javax.swing.JDialog {
      * @param modal
      */
     inventory.koneksi konek = new inventory.koneksi();
+    inventory.PetugasSession petugassession = new PetugasSession();
     
     public Frmsupplier(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         initUI();
-        
+        jTextField1.setText(petugassession.getU_username());
         txttemp_kode.hide();
         GetData();
         BtnEnabled(false);
@@ -70,13 +71,14 @@ public class Frmsupplier extends javax.swing.JDialog {
         try {
             Connection conn = konek.openkoneksi();
             java.sql.Statement stm = conn.createStatement();
-            java.sql.ResultSet sql = stm.executeQuery("SELECT tmsupplier.id, tmsupplier.kode, tmsupplier.nama, tmsupplier.no_telp, tmsupplier.alamat FROM tmsupplier");
+            java.sql.ResultSet sql = stm.executeQuery("SELECT tmsupplier.id, tmsupplier.nama_petugas,tmsupplier.kode, tmsupplier.nama, tmsupplier.no_telp, tmsupplier.alamat FROM tmsupplier");
             datatable.setModel(DbUtils.resultSetToTableModel(sql));
             datatable.getColumnModel().getColumn(0).setPreferredWidth(35);
-            datatable.getColumnModel().getColumn(1).setPreferredWidth(70);
-            datatable.getColumnModel().getColumn(2).setPreferredWidth(100);
-            datatable.getColumnModel().getColumn(3).setPreferredWidth(80);
-            datatable.getColumnModel().getColumn(4).setPreferredWidth(100);
+            datatable.getColumnModel().getColumn(1).setPreferredWidth(35);
+            datatable.getColumnModel().getColumn(2).setPreferredWidth(70);
+            datatable.getColumnModel().getColumn(3).setPreferredWidth(100);
+            datatable.getColumnModel().getColumn(4).setPreferredWidth(80);
+            datatable.getColumnModel().getColumn(5).setPreferredWidth(100);
 
             sql.last();
             String count_rows = String.valueOf(sql.getRow());
@@ -136,6 +138,7 @@ public class Frmsupplier extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         lblcount_rows = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Inventori Barang :: Data Supplier");
@@ -357,6 +360,8 @@ public class Frmsupplier extends javax.swing.JDialog {
             }
         });
 
+        jTextField1.setText("jTextField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -386,7 +391,10 @@ public class Frmsupplier extends javax.swing.JDialog {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_action)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_action)
+                        .addGap(48, 48, 48)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txttemp_kode, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -395,17 +403,22 @@ public class Frmsupplier extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnadd)
-                        .addComponent(btndelete)
-                        .addComponent(btnedit)))
-                .addGap(1, 1, 1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_action)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnadd)
+                                .addComponent(btndelete)
+                                .addComponent(btnedit)))
+                        .addGap(1, 1, 1)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_action)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(272, 272, 272)
@@ -414,8 +427,7 @@ public class Frmsupplier extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(28, 28, 28)
-                                .addComponent(txttemp_kode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txttemp_kode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblcount_rows)
@@ -435,7 +447,7 @@ public class Frmsupplier extends javax.swing.JDialog {
                 btnsave.setText("Simpan Perubahan");
                 Connection conn = konek.openkoneksi();
                 java.sql.Statement stm = conn.createStatement();
-                java.sql.ResultSet sql = stm.executeQuery("SELECT tmsupplier.id, tmsupplier.kode, tmsupplier.nama, tmsupplier.no_telp, tmsupplier.alamat FROM tmsupplier WHERE tmsupplier.id='"+row_id+"'");
+                java.sql.ResultSet sql = stm.executeQuery("SELECT tmsupplier.id,tmsupplier.nama_petugas, tmsupplier.kode, tmsupplier.nama, tmsupplier.no_telp, tmsupplier.alamat FROM tmsupplier WHERE tmsupplier.id='"+row_id+"'");
                 if(sql.next()){
                     lbl_action.setForeground(new Color(43, 152, 240));
                     String kode = sql.getString("kode");
@@ -494,7 +506,7 @@ public class Frmsupplier extends javax.swing.JDialog {
                     try {
                         Connection conn = konek.openkoneksi();
                         java.sql.Statement stm = conn.createStatement();
-                        stm.executeUpdate("INSERT INTO tmsupplier(kode, nama, no_telp, alamat) VALUES ('" + row_txtkode + "', '" + row_txtnama + "', '" + row_txttelp + "', '" + row_txtalamat + "')");
+                        stm.executeUpdate("INSERT INTO tmsupplier(nama_petugas,kode, nama, no_telp, alamat) VALUES ('"+petugassession.getU_username()+"','" + row_txtkode + "', '" + row_txtnama + "', '" + row_txttelp + "', '" + row_txtalamat + "')");
                         JOptionPane.showMessageDialog(null, "Berhasil menyimpan data.");
                         btnadd.doClick();
                         konek.closekoneksi();
@@ -514,7 +526,7 @@ public class Frmsupplier extends javax.swing.JDialog {
                     try {
                         Connection conn = konek.openkoneksi();
                         java.sql.Statement stm = conn.createStatement();
-                        stm.executeUpdate("UPDATE tmsupplier SET kode='" + row_txtkode + "',nama='" + row_txtnama + "',no_telp='" + row_txttelp + "',alamat='" + row_txtalamat + "' WHERE id = '" + row_id + "'");
+                        stm.executeUpdate("UPDATE tmsupplier SET nama_petugas='"+petugassession.getU_username()+"', kode='" + row_txtkode + "',nama='" + row_txtnama + "',no_telp='" + row_txttelp + "',alamat='" + row_txtalamat + "' WHERE id = '" + row_id + "'");
                         JOptionPane.showMessageDialog(null, "Berhasil mengubah data.");
                         btnadd.doClick();
                         konek.closekoneksi();
@@ -674,6 +686,7 @@ public class Frmsupplier extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbl_action;
     private javax.swing.JLabel lblcount_rows;
     private javax.swing.JPanel panel;
