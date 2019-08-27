@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c134c83c-726b-4f18-bba9-f55c2b30941b">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="5"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="id" class="java.lang.String"/>
 	<parameter name="nm_supplier" class="java.lang.String"/>
 	<queryString>
@@ -63,9 +63,6 @@ WHERE trbarang_keluar.id = $P{id}]]>
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
-			<rectangle>
-				<reportElement x="-28" y="-32" width="607" height="111" backcolor="#2B98F0" uuid="c541bfc5-187b-48b9-9980-681957e9d566"/>
-			</rectangle>
 			<staticText>
 				<reportElement x="0" y="42" width="226" height="27" forecolor="#B6E5FB" uuid="a8db9c42-686e-461e-93ad-5060da862fbc"/>
 				<textElement>
@@ -74,15 +71,19 @@ WHERE trbarang_keluar.id = $P{id}]]>
 				<text><![CDATA[INVENTORI BARANG]]></text>
 			</staticText>
 			<textField pattern="MMMMM dd, yyyy">
-				<reportElement x="445" y="49" width="100" height="20" forecolor="#FFFFFF" uuid="21a69f0b-a5d7-428a-b726-621df158118b"/>
+				<reportElement x="445" y="49" width="100" height="20" forecolor="#100606" uuid="21a69f0b-a5d7-428a-b726-621df158118b"/>
 				<textElement verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="333" y="49" width="112" height="20" forecolor="#FFFFFF" uuid="c24561b5-cea6-41a9-be72-0d001111dcc7"/>
+				<reportElement x="333" y="49" width="112" height="20" forecolor="#0E0404" uuid="c24561b5-cea6-41a9-be72-0d001111dcc7"/>
 				<textElement verticalAlignment="Bottom"/>
 				<text><![CDATA[Dicetak Pada Tanggal:]]></text>
 			</staticText>
+			<image>
+				<reportElement x="0" y="3" width="555" height="76" uuid="fab17b87-07e6-4687-b28c-a798137baa78"/>
+				<imageExpression><![CDATA["/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/build/classes/inventori_barang/img/content_mekaar-color.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

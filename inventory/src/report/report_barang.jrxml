@@ -42,9 +42,10 @@
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
-			<rectangle>
-				<reportElement x="-25" y="-30" width="604" height="109" backcolor="#2B98F0" uuid="c541bfc5-187b-48b9-9980-681957e9d566"/>
-			</rectangle>
+			<image>
+				<reportElement x="0" y="0" width="555" height="79" uuid="63c606fa-1b06-4a55-bec5-00e18015a282"/>
+				<imageExpression><![CDATA["/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/build/classes/inventori_barang/img/content_mekaar-color.png"]]></imageExpression>
+			</image>
 			<staticText>
 				<reportElement x="0" y="42" width="226" height="27" forecolor="#B6E5FB" uuid="a8db9c42-686e-461e-93ad-5060da862fbc"/>
 				<textElement>
@@ -52,26 +53,33 @@
 				</textElement>
 				<text><![CDATA[INVENTORI BARANG]]></text>
 			</staticText>
-			<textField pattern="MMMMM dd, yyyy">
-				<reportElement x="455" y="49" width="100" height="20" forecolor="#FFFFFF" uuid="21a69f0b-a5d7-428a-b726-621df158118b"/>
-				<textElement verticalAlignment="Bottom"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="343" y="49" width="112" height="20" forecolor="#FFFFFF" uuid="c24561b5-cea6-41a9-be72-0d001111dcc7"/>
-				<textElement verticalAlignment="Bottom"/>
-				<text><![CDATA[Dicetak Pada Tanggal:]]></text>
-			</staticText>
+			<elementGroup/>
 		</band>
 	</title>
 	<pageHeader>
 		<band height="36" splitType="Stretch">
 			<staticText>
-				<reportElement x="175" y="11" width="240" height="25" uuid="3a25319d-aabe-4929-a4fc-58d3fcefac40"/>
+				<reportElement x="27" y="6" width="240" height="25" uuid="3a25319d-aabe-4929-a4fc-58d3fcefac40"/>
 				<textElement>
 					<font fontName="SansSerif" size="20"/>
 				</textElement>
 				<text><![CDATA[Report Persedian Barang]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="444" y="11" width="100" height="20" forecolor="#0B0707" uuid="21a69f0b-a5d7-428a-b726-621df158118b"/>
+				<box>
+					<pen lineColor="#100606"/>
+					<topPen lineColor="#100606"/>
+					<leftPen lineColor="#100606"/>
+					<bottomPen lineColor="#100606"/>
+					<rightPen lineColor="#100606"/>
+				</box>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="331" y="16" width="113" height="15" uuid="c5459ab2-5418-47ec-8a47-9d327985b6fb"/>
+				<text><![CDATA[Di Cetak Pada Tanggal:]]></text>
 			</staticText>
 		</band>
 	</pageHeader>

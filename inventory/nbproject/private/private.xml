@@ -3,12 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/elhazard/NetBeansProjects/inventory/src/inventory/login.java</file>
-            <file>file:/home/elhazard/NetBeansProjects/inventory/src/inventory/FrmtransaksiMasuk.java</file>
-            <file>file:/home/elhazard/NetBeansProjects/inventory/src/inventory/admin.java</file>
-            <file>file:/home/elhazard/NetBeansProjects/inventory/src/inventory/Userselect.java</file>
-            <file>file:/home/elhazard/NetBeansProjects/inventory/src/inventory/superadmin.java</file>
-            <file>file:/home/elhazard/NetBeansProjects/inventory/src/inventory/stok.java</file>
+            <file>file:/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/src/inventory/FrmtransaksiKeluar.java</file>
+            <file>file:/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/src/inventory/superadmin.java</file>
+            <file>file:/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/src/report/report_transaksiKeluar.jrxml</file>
+            <file>file:/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/src/inventory/admin.java</file>
+            <file>file:/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/src/inventory/Frmsupplier.java</file>
+            <file>file:/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/src/report/report_barang.jrxml</file>
+            <file>file:/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/src/inventory/FrmbarangKategori.java</file>
+            <file>file:/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/src/inventory/Frmbarang.java</file>
+            <file>file:/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/src/inventory/Frmlaporan.java</file>
+            <file>file:/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/src/inventory/Frmpelanggan.java</file>
+            <file>file:/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/src/report/report_transaksiMasuk.jrxml</file>
+            <file>file:/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/src/report/report_barangKeluar.jrxml</file>
+            <file>file:/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/src/report/report_barangMasuk.jrxml</file>
+            <file>file:/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/src/inventory/FrmtransaksiMasuk.java</file>
+            <file>file:/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/src/inventory/superadminn.java</file>
         </group>
     </open-files>
 </project-private>

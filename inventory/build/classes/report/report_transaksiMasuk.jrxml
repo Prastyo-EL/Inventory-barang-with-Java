@@ -67,9 +67,10 @@ WHERE trbarang_masuk.id = $P{id}]]>
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
-			<rectangle>
-				<reportElement x="-20" y="-24" width="599" height="103" backcolor="#2B98F0" uuid="c541bfc5-187b-48b9-9980-681957e9d566"/>
-			</rectangle>
+			<image>
+				<reportElement x="0" y="3" width="555" height="76" uuid="ce8b379b-4974-4570-8f53-4963d8a2663d"/>
+				<imageExpression><![CDATA["/home/elhazard/Desktop/Inventory-barang-with-Java/inventory/build/classes/inventori_barang/img/content_mekaar-color.png"]]></imageExpression>
+			</image>
 			<staticText>
 				<reportElement x="0" y="42" width="226" height="27" forecolor="#B6E5FB" uuid="a8db9c42-686e-461e-93ad-5060da862fbc"/>
 				<textElement>
@@ -78,12 +79,12 @@ WHERE trbarang_masuk.id = $P{id}]]>
 				<text><![CDATA[INVENTORI BARANG]]></text>
 			</staticText>
 			<textField pattern="MMMMM dd, yyyy">
-				<reportElement x="445" y="49" width="100" height="20" forecolor="#FFFFFF" uuid="21a69f0b-a5d7-428a-b726-621df158118b"/>
+				<reportElement x="445" y="59" width="100" height="20" forecolor="#0E0707" uuid="21a69f0b-a5d7-428a-b726-621df158118b"/>
 				<textElement verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="333" y="49" width="112" height="20" forecolor="#FFFFFF" uuid="c24561b5-cea6-41a9-be72-0d001111dcc7"/>
+				<reportElement x="333" y="59" width="112" height="20" forecolor="#130707" uuid="c24561b5-cea6-41a9-be72-0d001111dcc7"/>
 				<textElement verticalAlignment="Bottom"/>
 				<text><![CDATA[Dicetak Pada Tanggal:]]></text>
 			</staticText>
