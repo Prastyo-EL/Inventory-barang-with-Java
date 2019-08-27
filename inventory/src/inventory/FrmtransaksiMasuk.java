@@ -55,7 +55,7 @@ public class FrmtransaksiMasuk extends javax.swing.JDialog {
         Calendar cal = Calendar.getInstance();
         
         txttgl.setText(dateFormat.format(cal.getTime()));
-        txtnm_petugas.setText(PetugasSession.getU_nama());
+        txtnm_petugas.setText(PetugasSession.getU_username());
         txtid_petugas.setText(Integer.toString(PetugasSession.getU_id()));
         
         SelectPelanggan();
@@ -132,11 +132,12 @@ public class FrmtransaksiMasuk extends javax.swing.JDialog {
         try {
             Connection conn = konek.openkoneksi();
             java.sql.Statement stm = conn.createStatement();
-            java.sql.ResultSet sql = stm.executeQuery("SELECT  tmbarang.kode, tmbarang.nama, tmkategori.nama as kategori FROM tmbarang JOIN tmkategori ON tmkategori.id = tmbarang.id_kategori");
+            java.sql.ResultSet sql = stm.executeQuery("SELECT  tmbarang.kode,tmbarang.nama_petugas, tmbarang.nama, tmkategori.nama as kategori FROM tmbarang JOIN tmkategori ON tmkategori.id = tmbarang.id_kategori");
             jTable2.setModel(DbUtils.resultSetToTableModel(sql));
             jTable2.getColumnModel().getColumn(0).setPreferredWidth(7);
-            jTable2.getColumnModel().getColumn(1).setPreferredWidth(20);
-            jTable2.getColumnModel().getColumn(2).setPreferredWidth(90);
+            jTable2.getColumnModel().getColumn(1).setPreferredWidth(40);
+            jTable2.getColumnModel().getColumn(2).setPreferredWidth(20);
+            jTable2.getColumnModel().getColumn(3).setPreferredWidth(90);
            
             sql.last();
             String count_rows = String.valueOf(sql.getRow());
@@ -257,7 +258,7 @@ public class FrmtransaksiMasuk extends javax.swing.JDialog {
 
             },
             new String [] {
-                "ID", "Kode", "Nama Barang", "Jumlah"
+                "ID", "Kode", "Nama Barang", "jumlah"
             }
         ));
         datatable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -599,7 +600,7 @@ public class FrmtransaksiMasuk extends javax.swing.JDialog {
             try {
                 Connection conn = konek.openkoneksi();
                 java.sql.Statement stm = conn.createStatement();
-                stm.executeUpdate("INSERT INTO trbarang_masuk(tgl, id_petugas, id_supplier) VALUES ('" + row_tgl + "', '" + row_idpetugas + "', '" + row_idpelanggan + "')");
+                stm.executeUpdate("INSERT INTO trbarang_masuk(tgl,nama_petugas, id_petugas, id_supplier) VALUES ('" + row_tgl + "', '"+PetugasSession.getU_username()+"','" + row_idpetugas + "', '" + row_idpelanggan + "')");
                 konek.closekoneksi();
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Error " + e);
@@ -666,7 +667,7 @@ public class FrmtransaksiMasuk extends javax.swing.JDialog {
                     try {
                         Connection conn = konek.openkoneksi();
                         java.sql.Statement stm = conn.createStatement();
-                        stm.executeUpdate("INSERT INTO trbarang_masuk_detail(id_barang_masuk, id_barang, jumlah) VALUES ('" + id_barang_masuk + "', '" + id + "', '" + jumlah + "')");
+                        stm.executeUpdate("INSERT INTO trbarang_masuk_detail(nama_petugas,id_barang_masuk, id_barang, jumlah) VALUES ('"+PetugasSession.getU_username()+"','" + id_barang_masuk + "', '" + id + "', '" + jumlah + "')");
                         empty = 1;
                         konek.closekoneksi();
                     } catch (SQLException e) {

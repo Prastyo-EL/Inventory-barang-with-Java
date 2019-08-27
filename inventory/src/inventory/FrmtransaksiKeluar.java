@@ -130,7 +130,7 @@ public class FrmtransaksiKeluar extends javax.swing.JDialog {
         try {
             Connection conn = konek.openkoneksi();
             java.sql.Statement stm = conn.createStatement();
-            java.sql.ResultSet sql = stm.executeQuery("SELECT  tmbarang.kode, tmbarang.nama, tmkategori.nama as kategori FROM tmbarang JOIN tmkategori ON tmkategori.id = tmbarang.id_kategori");
+            java.sql.ResultSet sql = stm.executeQuery("SELECT  tmbarang.kode,tmbarang.nama_petugas, tmbarang.nama, tmkategori.nama as kategori FROM tmbarang JOIN tmkategori ON tmkategori.id = tmbarang.id_kategori");
             jTable1.setModel(DbUtils.resultSetToTableModel(sql));
             jTable1.getColumnModel().getColumn(0).setPreferredWidth(7);
             jTable1.getColumnModel().getColumn(1).setPreferredWidth(20);
@@ -460,7 +460,7 @@ public class FrmtransaksiKeluar extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnsave, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
@@ -588,7 +588,7 @@ public class FrmtransaksiKeluar extends javax.swing.JDialog {
             try {
                 Connection conn = konek.openkoneksi();
                 java.sql.Statement stm = conn.createStatement();
-                stm.executeUpdate("INSERT INTO trbarang_keluar(tgl, id_petugas, id_pelanggan) VALUES ('" + row_tgl + "', '" + row_idpetugas + "', '" + row_idpelanggan + "')");
+                stm.executeUpdate("INSERT INTO trbarang_keluar(tgl,nama_petugas, id_petugas, id_pelanggan) VALUES ('" + row_tgl + "','"+PetugasSession.getU_username()+"', '" + row_idpetugas + "', '" + row_idpelanggan + "')");
                 konek.closekoneksi();
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Error " + e);
@@ -655,7 +655,7 @@ public class FrmtransaksiKeluar extends javax.swing.JDialog {
                     try {
                         Connection conn = konek.openkoneksi();
                         java.sql.Statement stm = conn.createStatement();
-                        stm.executeUpdate("INSERT INTO trbarang_keluar_detail(id_barang_keluar, id_barang, jumlah) VALUES ('" + id_barang_keluar + "', '" + id + "', '" + jumlah + "')");
+                        stm.executeUpdate("INSERT INTO trbarang_keluar_detail(nama_petugas,id_barang_keluar, id_barang, jumlah) VALUES ('"+PetugasSession.getU_username()+"','" + id_barang_keluar + "', '" + id + "', '" + jumlah + "')");
                         empty = 1;
                         konek.closekoneksi();
                     } catch (SQLException e) {

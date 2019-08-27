@@ -9,6 +9,7 @@
 		<![CDATA[SELECT 
 	tmbarang.id,
 	tmbarang.kode,
+	trbarang_masuk.nama_petugas,
 	tmbarang.nama,
 	trbarang_masuk.tgl,
 	trbarang_masuk_detail.jumlah,
@@ -27,6 +28,9 @@ WHERE trbarang_masuk.id = $P{id}]]>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="kode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_petugas" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama" class="java.lang.String">
@@ -109,20 +113,18 @@ WHERE trbarang_masuk.id = $P{id}]]>
 	<columnHeader>
 		<band height="30" splitType="Stretch">
 			<rectangle>
+				<reportElement x="68" y="10" width="147" height="20" backcolor="#B6E5FB" uuid="95bf75e5-be47-436c-9a82-274b735ccabf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="215" y="10" width="240" height="20" backcolor="#B6E5FB" uuid="60ea7e73-403f-4ecc-9dfd-aff2c593227d"/>
+			</rectangle>
+			<rectangle>
 				<reportElement mode="Opaque" x="0" y="10" width="68" height="20" backcolor="#B6E5FB" uuid="765dff47-d9a6-46f4-bafe-904ad6224c93"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="0" y="10" width="68" height="20" backcolor="#B6E5FB" uuid="94463579-3842-4bc8-8e52-91bf37651441"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[KODE]]></text>
-			</staticText>
-			<rectangle>
-				<reportElement x="68" y="10" width="387" height="20" backcolor="#B6E5FB" uuid="60ea7e73-403f-4ecc-9dfd-aff2c593227d"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="68" y="10" width="387" height="20" backcolor="#B6E5FB" uuid="1dac0558-d146-40fa-b98f-314934174f61"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[NAMA BARANG]]></text>
 			</staticText>
 			<rectangle>
 				<reportElement x="455" y="10" width="100" height="20" backcolor="#B6E5FB" uuid="a65767bd-e73f-4a1a-8d6b-693f97cf491e"/>
@@ -132,12 +134,22 @@ WHERE trbarang_masuk.id = $P{id}]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[JUMLAH]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="215" y="10" width="240" height="20" backcolor="#B6E5FB" uuid="1dac0558-d146-40fa-b98f-314934174f61"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NAMA BARANG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="10" width="130" height="20" backcolor="#B6E5FB" uuid="76178c00-5207-4089-a613-603970f5cafd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NAMA PETUGAS]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="85" y="0" width="370" height="20" uuid="83e2ec43-472e-40a3-beed-443346a3402f"/>
+				<reportElement x="226" y="0" width="229" height="20" uuid="83e2ec43-472e-40a3-beed-443346a3402f"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
 			</textField>
@@ -155,7 +167,7 @@ WHERE trbarang_masuk.id = $P{id}]]>
 				<reportElement mode="Transparent" x="0" y="0" width="68" height="20" uuid="e9155061-953c-4195-bf4a-a5f437e44d5d"/>
 			</rectangle>
 			<rectangle>
-				<reportElement mode="Transparent" x="68" y="0" width="387" height="20" uuid="2adb5ca0-f2cc-4785-8801-c18651919c79"/>
+				<reportElement mode="Transparent" x="215" y="0" width="240" height="20" uuid="2adb5ca0-f2cc-4785-8801-c18651919c79"/>
 			</rectangle>
 			<rectangle>
 				<reportElement mode="Transparent" x="455" y="0" width="100" height="20" uuid="a1a170d1-9d89-4e8c-8a96-d174903f69ea"/>
@@ -164,6 +176,13 @@ WHERE trbarang_masuk.id = $P{id}]]>
 				<reportElement x="465" y="0" width="29" height="20" uuid="0b2af7f4-b5e0-452b-b5bd-2c51d4f6ecd7"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{jumlah}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="68" y="0" width="147" height="20" uuid="fef701c3-2c1e-47b2-af9b-c54af65ce083"/>
+			</rectangle>
+			<textField>
+				<reportElement x="85" y="0" width="130" height="20" uuid="2f91d149-417d-4cfa-8eb1-9307efeb3c80"/>
+				<textFieldExpression><![CDATA[$F{nama_petugas}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

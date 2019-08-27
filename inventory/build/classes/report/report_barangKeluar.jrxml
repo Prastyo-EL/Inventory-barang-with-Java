@@ -10,6 +10,7 @@
 	tmbarang.id,
 	tmbarang.kode,
 	tmbarang.nama,
+	trbarang_keluar_detail.nama_petugas,
 	trbarang_keluar.tgl,
 	trbarang_keluar_detail.jumlah,
 	tmbarang.satuan,
@@ -30,6 +31,9 @@ WHERE trbarang_keluar.tgl BETWEEN $P{d_dari} AND $P{d_sampai}]]>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_petugas" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tgl" class="java.sql.Date">
@@ -119,20 +123,23 @@ WHERE trbarang_keluar.tgl BETWEEN $P{d_dari} AND $P{d_sampai}]]>
 	<columnHeader>
 		<band height="30" splitType="Stretch">
 			<rectangle>
+				<reportElement x="226" y="10" width="107" height="20" backcolor="#B6E5FB" uuid="60ea7e73-403f-4ecc-9dfd-aff2c593227d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Opaque" x="163" y="10" width="63" height="20" backcolor="#B6E5FB" uuid="bf9cde33-d776-4a09-ae9c-54dd280b7004"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="226" y="10" width="107" height="20" backcolor="#B6E5FB" uuid="1dac0558-d146-40fa-b98f-314934174f61"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NAMA BARANG]]></text>
+			</staticText>
+			<rectangle>
 				<reportElement mode="Opaque" x="95" y="10" width="68" height="20" backcolor="#B6E5FB" uuid="765dff47-d9a6-46f4-bafe-904ad6224c93"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="95" y="10" width="68" height="20" backcolor="#B6E5FB" uuid="94463579-3842-4bc8-8e52-91bf37651441"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[KODE]]></text>
-			</staticText>
-			<rectangle>
-				<reportElement x="163" y="10" width="170" height="20" backcolor="#B6E5FB" uuid="60ea7e73-403f-4ecc-9dfd-aff2c593227d"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="163" y="10" width="170" height="20" backcolor="#B6E5FB" uuid="1dac0558-d146-40fa-b98f-314934174f61"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[NAMA BARANG]]></text>
 			</staticText>
 			<rectangle>
 				<reportElement x="333" y="10" width="122" height="20" backcolor="#B6E5FB" uuid="c179f7d4-ea96-48f8-b3a7-c45bf47526af"/>
@@ -158,12 +165,23 @@ WHERE trbarang_keluar.tgl BETWEEN $P{d_dari} AND $P{d_sampai}]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[TANGGAL]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="171" y="10" width="51" height="20" uuid="dfb2e8f3-4e10-48ad-9b7c-ba7722cd3799"/>
+				<text><![CDATA[PETUGAS]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="180" y="0" width="153" height="20" uuid="83e2ec43-472e-40a3-beed-443346a3402f"/>
+				<reportElement x="171" y="0" width="55" height="20" uuid="3e8f5833-fde9-448f-bb2b-4440247339c9"/>
+				<textFieldExpression><![CDATA[$F{nama_petugas}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="226" y="0" width="107" height="20" uuid="2adb5ca0-f2cc-4785-8801-c18651919c79"/>
+			</rectangle>
+			<textField>
+				<reportElement x="238" y="0" width="84" height="20" uuid="83e2ec43-472e-40a3-beed-443346a3402f"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
 			</textField>
@@ -179,9 +197,6 @@ WHERE trbarang_keluar.tgl BETWEEN $P{d_dari} AND $P{d_sampai}]]>
 			</textField>
 			<rectangle>
 				<reportElement mode="Transparent" x="95" y="0" width="68" height="20" uuid="e9155061-953c-4195-bf4a-a5f437e44d5d"/>
-			</rectangle>
-			<rectangle>
-				<reportElement mode="Transparent" x="163" y="0" width="170" height="20" uuid="2adb5ca0-f2cc-4785-8801-c18651919c79"/>
 			</rectangle>
 			<rectangle>
 				<reportElement mode="Transparent" x="333" y="0" width="122" height="20" uuid="70e7eed7-1b31-4b75-a991-84101190c056"/>
@@ -207,6 +222,9 @@ WHERE trbarang_keluar.tgl BETWEEN $P{d_dari} AND $P{d_sampai}]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{tgl}]]></textFieldExpression>
 			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="163" y="0" width="63" height="20" uuid="6114bfa5-4b64-4c59-9756-71c185198d95"/>
+			</rectangle>
 		</band>
 	</detail>
 	<columnFooter>

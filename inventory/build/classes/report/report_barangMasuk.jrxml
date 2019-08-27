@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c134c83c-726b-4f18-bba9-f55c2b30941b">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="210"/>
 	<parameter name="d_dari" class="java.lang.String"/>
 	<parameter name="d_sampai" class="java.lang.String"/>
 	<queryString>
@@ -10,6 +10,7 @@
 	tmbarang.id,
 	tmbarang.kode,
 	tmbarang.nama,
+	trbarang_masuk.nama_petugas,
 	trbarang_masuk.tgl,
 	trbarang_masuk_detail.jumlah,
 	tmbarang.satuan,
@@ -30,6 +31,9 @@ WHERE trbarang_masuk.tgl BETWEEN $P{d_dari} AND $P{d_sampai}]]>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_petugas" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tgl" class="java.sql.Date">
@@ -119,21 +123,14 @@ WHERE trbarang_masuk.tgl BETWEEN $P{d_dari} AND $P{d_sampai}]]>
 	<columnHeader>
 		<band height="30" splitType="Stretch">
 			<rectangle>
+				<reportElement mode="Opaque" x="163" y="10" width="63" height="20" backcolor="#B6E5FB" uuid="63cb19ea-3f3e-4a20-a528-17bdd4972df0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="226" y="10" width="107" height="20" backcolor="#B6E5FB" uuid="60ea7e73-403f-4ecc-9dfd-aff2c593227d"/>
+			</rectangle>
+			<rectangle>
 				<reportElement mode="Opaque" x="95" y="10" width="68" height="20" backcolor="#B6E5FB" uuid="765dff47-d9a6-46f4-bafe-904ad6224c93"/>
 			</rectangle>
-			<staticText>
-				<reportElement x="95" y="10" width="68" height="20" backcolor="#B6E5FB" uuid="94463579-3842-4bc8-8e52-91bf37651441"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[KODE]]></text>
-			</staticText>
-			<rectangle>
-				<reportElement x="163" y="10" width="170" height="20" backcolor="#B6E5FB" uuid="60ea7e73-403f-4ecc-9dfd-aff2c593227d"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="163" y="10" width="170" height="20" backcolor="#B6E5FB" uuid="1dac0558-d146-40fa-b98f-314934174f61"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[NAMA BARANG]]></text>
-			</staticText>
 			<rectangle>
 				<reportElement x="333" y="10" width="122" height="20" backcolor="#B6E5FB" uuid="c179f7d4-ea96-48f8-b3a7-c45bf47526af"/>
 			</rectangle>
@@ -163,12 +160,29 @@ WHERE trbarang_masuk.tgl BETWEEN $P{d_dari} AND $P{d_sampai}]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[TANGGAL]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="175" y="10" width="51" height="20" uuid="f986d2db-66ea-480b-af91-4c839682d3cb"/>
+				<text><![CDATA[PETUGAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="226" y="10" width="107" height="20" backcolor="#B6E5FB" uuid="1dac0558-d146-40fa-b98f-314934174f61"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NAMA BARANG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="10" width="68" height="20" backcolor="#B6E5FB" uuid="94463579-3842-4bc8-8e52-91bf37651441"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[KODE]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="95" y="0" width="68" height="20" uuid="99c5a787-7796-4706-b0ef-64647dc94b75"/>
+			</rectangle>
 			<textField>
-				<reportElement x="180" y="0" width="153" height="20" uuid="83e2ec43-472e-40a3-beed-443346a3402f"/>
+				<reportElement x="242" y="0" width="91" height="20" uuid="83e2ec43-472e-40a3-beed-443346a3402f"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
 			</textField>
@@ -183,10 +197,7 @@ WHERE trbarang_masuk.tgl BETWEEN $P{d_dari} AND $P{d_sampai}]]>
 				<textFieldExpression><![CDATA[$F{kode}]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement mode="Transparent" x="95" y="0" width="68" height="20" uuid="e9155061-953c-4195-bf4a-a5f437e44d5d"/>
-			</rectangle>
-			<rectangle>
-				<reportElement mode="Transparent" x="163" y="0" width="170" height="20" uuid="2adb5ca0-f2cc-4785-8801-c18651919c79"/>
+				<reportElement mode="Transparent" x="226" y="0" width="107" height="20" uuid="2adb5ca0-f2cc-4785-8801-c18651919c79"/>
 			</rectangle>
 			<rectangle>
 				<reportElement mode="Transparent" x="333" y="0" width="122" height="20" uuid="70e7eed7-1b31-4b75-a991-84101190c056"/>
@@ -212,6 +223,13 @@ WHERE trbarang_masuk.tgl BETWEEN $P{d_dari} AND $P{d_sampai}]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{tgl}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="175" y="0" width="51" height="20" uuid="e223d593-d418-4558-9b89-c82497e8ba47"/>
+				<textFieldExpression><![CDATA[$F{nama_petugas}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="163" y="0" width="63" height="20" uuid="e9155061-953c-4195-bf4a-a5f437e44d5d"/>
+			</rectangle>
 		</band>
 	</detail>
 	<columnFooter>
